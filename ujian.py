@@ -47,8 +47,7 @@ def total():
 
 def top_up(dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000, total_harga, total_belanja, qty_item, opsi):
     while True:
-        show_games(dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000)
-
+        show_games(dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000,opsi)
         if opsi == 1:
             transaksi = input("Ingin Beli Opsi berapa (1-4): ")
             if transaksi == '1':
@@ -109,9 +108,9 @@ def top_up(dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok
 def print_receipt(total_harga, qty_item):
     try:
         with open("transaksi.txt", "w") as ts:
-            ts.write(f"==================Receipt==================")
-            ts.write(f"Total Harga  Anda      : {total_harga}")
-            ts.write(f"Total Belanja Anda     : {qty_item} Items")
+            ts.write(f"==================Receipt==================\n")
+            ts.write(f"Total Harga  Anda      : {total_harga}\n")
+            ts.write(f"Total Belanja Anda     : {qty_item} Items\n")
         
 
     except Exception as e:
@@ -120,7 +119,7 @@ def print_receipt(total_harga, qty_item):
 
 def main():
     dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100, token_hok_300, token_hok_600, token_hok_1000 = updatestok()
-    total_harga, total_belanja, qty_item = total()
+    total_harga, qty_item = total()
     opsi = 0
     nama = input("Masukkan Username anda: ")
     print(f'====Selamat Datang {nama}====')
@@ -138,7 +137,7 @@ Daftar Menu:
             show_games(dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000)
 
         elif menu == '2':
-            dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000, total_harga, qty_item, opsi = top_up(opsi,dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000, total_harga, total_belanja, qty_item)
+            dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000, total_harga, qty_item, opsi = top_up(opsi,dm_ml_10, dm_ml_100, dm_ml_500, dm_ml_1000, token_hok_100 , token_hok_300, token_hok_600, token_hok_1000, total_harga, qty_item,opsi)
 
         elif menu == '3':
             print_receipt(total_harga, qty_item)
